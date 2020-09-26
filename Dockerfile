@@ -26,7 +26,8 @@ RUN apt-get install -y \
         libmcrypt-dev \
         libreadline-dev \
         librabbitmq-dev \
-        unzip 
+        unzip \
+        libonig-dev
 
 RUN  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -46,7 +47,6 @@ RUN /usr/local/bin/docker-php-ext-install gd
 RUN /usr/local/bin/docker-php-ext-install bz2
 RUN /usr/local/bin/docker-php-ext-install pdo
 RUN /usr/local/bin/docker-php-ext-install pdo_pgsql
-RUN /usr/local/bin/docker-php-ext-install pdo_sqlite
 RUN /usr/local/bin/docker-php-ext-install pgsql
 RUN /usr/local/bin/docker-php-ext-install soap
 RUN /usr/local/bin/docker-php-ext-install xml
