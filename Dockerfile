@@ -27,7 +27,9 @@ RUN apt-get install -y \
         libreadline-dev \
         librabbitmq-dev \
         unzip \
-        libonig-dev
+        libonig-dev \
+        iproute2 \
+        iputils-ping
 
 RUN  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
