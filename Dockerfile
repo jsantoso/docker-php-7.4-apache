@@ -29,7 +29,15 @@ RUN apt-get install -y \
         unzip \
         libonig-dev \
         iproute2 \
-        iputils-ping
+        iputils-ping \
+        imagemagick \
+        lftp \
+        poppler-utils \
+        zip \
+        pdftk \
+        expect \
+        mkisofs \
+        libmagickwand-dev
 
 RUN  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -74,20 +82,20 @@ RUN pecl install xdebug
 RUN pecl install memcached
 RUN echo extension=memcached.so >> /usr/local/etc/php/conf.d/memcached.ini
 
-ADD conf.d/php.ini /etc/php/7.3/php.ini
-ADD conf.d/xdebug.ini /etc/php/7.3/xdebug.ini
+ADD conf.d/php.ini /etc/php/7.4/php.ini
+ADD conf.d/xdebug.ini /etc/php/7.4/xdebug.ini
 
-RUN mkdir -p /etc/php/7.3/fpm/conf.d
-RUN ln -s /etc/php/7.3/php.ini /etc/php/7.3/fpm/conf.d/90-tris.ini
-RUN ln -s /etc/php/7.3/xdebug.ini /etc/php/7.3/fpm/conf.d/90-xdebug.ini
+RUN mkdir -p /etc/php/7.4/fpm/conf.d
+RUN ln -s /etc/php/7.4/php.ini /etc/php/7.4/fpm/conf.d/90-tris.ini
+RUN ln -s /etc/php/7.4/xdebug.ini /etc/php/7.4/fpm/conf.d/90-xdebug.ini
 
-RUN mkdir -p /etc/php/7.3/cli/conf.d
-RUN ln -s /etc/php/7.3/php.ini /etc/php/7.3/cli/conf.d/90-tris.ini
-RUN ln -s /etc/php/7.3/xdebug.ini /etc/php/7.3/cli/conf.d/90-xdebug.ini
+RUN mkdir -p /etc/php/7.4/cli/conf.d
+RUN ln -s /etc/php/7.4/php.ini /etc/php/7.4/cli/conf.d/90-tris.ini
+RUN ln -s /etc/php/7.4/xdebug.ini /etc/php/7.4/cli/conf.d/90-xdebug.ini
 
 RUN mkdir -p /usr/local/etc/php/conf.d
-RUN ln -s /etc/php/7.3/php.ini /usr/local/etc/php/conf.d/90-tris.ini
-RUN ln -s /etc/php/7.3/xdebug.ini /usr/local/etc/php/conf.d/90-xdebug.ini
+RUN ln -s /etc/php/7.4/php.ini /usr/local/etc/php/conf.d/90-tris.ini
+RUN ln -s /etc/php/7.4/xdebug.ini /usr/local/etc/php/conf.d/90-xdebug.ini
 
 RUN rm /etc/apache2/sites-enabled/000-default.conf
 COPY site.conf /etc/apache2/sites-available/site.conf
